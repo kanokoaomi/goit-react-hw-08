@@ -1,4 +1,4 @@
-
+import Contact from "./Contact/Contact"
 
 const ContactList = ({ contacts }) => {
     return (
@@ -6,7 +6,7 @@ const ContactList = ({ contacts }) => {
             {contacts.map((contact) => {
                 return (
                     <li key={contact.id}>
-                        {/* <Contact contact={contact} /> */}
+                        <Contact contact={contact} />
                     </li>
                 )
             })}
