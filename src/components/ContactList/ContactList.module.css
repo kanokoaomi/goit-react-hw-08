@@ -1,0 +1,16 @@
+.listOfContacts {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.wrapper {
+    display: flex;
+    background-color: whitesmoke;
+    justify-content: space-between;
+    padding: 16px;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid black;
+}
