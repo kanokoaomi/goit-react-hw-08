@@ -38,13 +38,16 @@ const App = () => {
 
   // console.log(originalContacts)
   // console.log(displayedContacts)
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-    const filteredContacts = contacts.filter((contact) => {
-      return contact.name.toLowerCase().includes(event.target.value.toLowerCase().trim())
-    })
-    setContact(event.target.value === '' ? originalContacts : filteredContacts);
-  }
+  // const handleChange = (event) => {
+  //   setInputValue(event.target.value);
+  //   const filteredContacts = contacts.filter((contact) => {
+  //     return contact.name.toLowerCase().includes(event.target.value.toLowerCase().trim())
+  //   })
+  //   setContact(event.target.value === '' ? originalContacts : filteredContacts);
+  // }
+  const filteredContacts = contacts.filter((contact) => {
+    return contact.name.toLowerCase().includes(inputValue.toLowerCase().trim())
+  })
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts))
@@ -56,8 +59,8 @@ const App = () => {
       <ContactForm onAddContact={onAddContact} />
       <SearchBox
         inputValue={inputValue}
-        handleChange={handleChange} />
-      <ContactList contacts={contacts} onDeleteContact={onDeleteContact} />
+        handleChange={setInputValue} />
+      <ContactList contacts={filteredContacts} onDeleteContact={onDeleteContact} />
     </div>
   )
 }

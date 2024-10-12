@@ -5,7 +5,8 @@ const SearchBox = ({ inputValue, handleChange }) => {
     <div className={styles.wrapper}>
       <p>Find contacts by name:</p>
       <label>
-        <input className={styles.input} name="search" type="text" value={inputValue} onChange={handleChange} />
+        <input className={styles.input} name="search" type="text" value={inputValue}
+          onChange={event => { handleChange(event.target.value) }} />
       </label>
     </div>
   )
