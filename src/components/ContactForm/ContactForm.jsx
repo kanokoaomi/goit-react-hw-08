@@ -4,7 +4,6 @@ import * as Yup from "yup"
 import { nanoid } from "nanoid"
 import { addContact } from "../../redux/contactsSlice"
 import { useDispatch } from "react-redux"
-// import { nanoid } from "nanoid"
 
 const ContactForm = () => {
   const initialValues = {
@@ -26,7 +25,6 @@ const ContactForm = () => {
     }
     const action = addContact(finalContacts)
     dispatch(action)
-    // setContact((previousListOfContacts) => [...previousListOfContacts, finalContacts])
   }
 
   const phoneNumberRegex =

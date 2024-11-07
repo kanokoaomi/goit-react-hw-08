@@ -6,7 +6,7 @@ const ContactList = ({ onDeleteContact }) => {
     const contacts = useSelector((state) => state.contacts.items)
     const filters = useSelector((state) => state.filters.name)
     const filteredContacts = contacts.filter((contact) => {
-        contact.name.toLowerCase().includes(filters.toLowerCase().trim())
+        return contact.name.toLowerCase().includes(filters.toLowerCase().trim())
 
     })
     return (
