@@ -4,6 +4,8 @@ import ContactList from "./components/ContactList/ContactList"
 
 
 const App = () => {
+
+
   return (
     <div>
       <h1 style={{ marginLeft: "40px" }}>Phonebook</h1>
