@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const contactsInstance = axios.create({
-  baseURL: "https://67386dbf4eb22e24fca7e4d9.mockapi.io/goit-redux-07/contacts",
+  baseURL: "https://connections-api.goit.global/",
 });
 
 export const fetchContacts = createAsyncThunk(
@@ -40,5 +40,3 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
-
-// export const

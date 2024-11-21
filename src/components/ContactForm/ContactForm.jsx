@@ -1,10 +1,9 @@
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import styles from "./ContactForm.module.css"
-import * as Yup from "yup"
 import { nanoid } from "nanoid"
-// import { addContact } from "../../redux/contactsSlice"
 import { useDispatch } from "react-redux"
-import { addContact } from "../../redux/contactsOps"
+import { addContact } from "../../redux/contacts/operations"
+import { contactsValidationSchema } from "../../utils/schemas"
 
 const ContactForm = () => {
   const initialValues = {
@@ -28,16 +27,8 @@ const ContactForm = () => {
     dispatch(action)
   }
 
-  const phoneNumberRegex =
-    /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
-
-  const validation = Yup.object().shape({
-    name: Yup.string().min(3, "Too short!").max(50, "Too long!").required("Required field"),
-    number: Yup.string().min(3, "Too short!").max(50, "Too long!").required("Required field").matches(phoneNumberRegex, "Number must be like: +380*********"),
-  })
-
   return (
-    <Formik initialValues={initialValues} validationSchema={validation} onSubmit={handleSubmit}>
+    <Formik initialValues={initialValues} validationSchema={contactsValidationSchema} onSubmit={handleSubmit}>
       <Form className={styles.form}>
         <label className={styles.label}>
           <span>Name:</span>
