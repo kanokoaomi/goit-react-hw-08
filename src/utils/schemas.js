@@ -31,6 +31,6 @@ export const registrationValidationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email address").required("Required"),
   password: Yup.string()
     .min(8, "Password must be at least 8 symbols")
-    .max(15, "Password must be the most 15 symbols")
+    // .max(15, "Password must be the most 15 symbols")
     .required("Required"),
 });

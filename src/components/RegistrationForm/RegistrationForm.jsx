@@ -1,6 +1,8 @@
-import { ErrorMessage, Field, Formik } from "formik"
+import { ErrorMessage, Field, Formik, Form } from "formik"
 import { registrationValidationSchema } from "../../utils/schemas"
-import { Form } from "react-router-dom"
+// import { Form } from "react-router-dom"
+import { register } from "../../redux/auth/operations"
+import { useDispatch } from "react-redux"
 
 
 const RegistrationForm = () => {
@@ -10,17 +12,13 @@ const RegistrationForm = () => {
         password: '',
     }
 
+    const dispatch = useDispatch()
+
     const handleSubmit = (values, actions) => {
-        // onAddContact(values)
+        dispatch(register(values))
         console.log(values)
         actions.resetForm()
     }
-
-    // const onAddContact = (formData) => {
-    //     const finalContacts = {
-    //         ...formData,
-    //     }
-    // }
 
     return (
         <Formik
@@ -55,7 +53,7 @@ const RegistrationForm = () => {
                     <ErrorMessage name='password' component='span' />
                 </label>
 
-                <button type="submit">Log In</button>
+                <button type="submit">Sign In</button>
             </Form>
         </Formik>
     )

@@ -1,6 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { loginValidationSchema } from "../../utils/schemas";
-
+import { login } from "../../redux/auth/operations";
+import { useDispatch } from "react-redux";
 
 const LoginForm = () => {
     const initialValues = {
@@ -8,10 +9,12 @@ const LoginForm = () => {
         password: '',
     }
 
-    // const handleSubmit = (values, actions) => {
-    //     onAddContact(values)
-    //     actions.resetForm()
-    // }
+    const dispatch = useDispatch()
+
+    const handleSubmit = (values, actions) => {
+        dispatch(login(values))
+        actions.resetForm()
+    }
 
     // const onAddContact = (formData) => {
     //     const finalContacts = {
@@ -23,7 +26,7 @@ const LoginForm = () => {
         <Formik
             initialValues={initialValues}
             validationSchema={loginValidationSchema}
-        // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
         >
             <Form>
                 <label>

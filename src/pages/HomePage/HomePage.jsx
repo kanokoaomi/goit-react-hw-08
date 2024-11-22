@@ -1,19 +1,20 @@
 import { useSelector } from "react-redux"
-import { selectUser } from "../redux/auth/selectors"
+import { selectUserName } from "../../redux/auth/selectors"
 import { Link } from "react-router-dom"
 // import RegistrationPage from "./RegistrationPage"
-
+import styles from "./HomePage.module.css"
+import Section from "../../components/Section/Section"
 
 const HomePage = () => {
 
-    const userName = useSelector(selectUser)
+    const userName = useSelector(selectUserName)
 
     return (
-        <div>
-            <h1>Welcome, {userName ? userName : "friend"}!</h1>
+        <Section>
+            <h1 className={styles.title}>Welcome, {userName ? userName : "friend"}!</h1>
             <p>Please, {<Link to="/register">create an account</Link>} or {<Link to="/login">log in</Link>} to have an access to your personal contact book!</p>
 
-        </div>
+        </Section>
     )
 }
 
