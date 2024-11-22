@@ -38,6 +38,7 @@ export const login = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const { data } = await authInstance.post("/users/login", formData);
+      setToken(data.token);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -45,22 +46,31 @@ export const login = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
+  try {
+    const { data } = await authInstance.post("/users/logout");
+    clearToken();
+    return data;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+});
+
 export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkApi) => {
     const state = thunkApi.getState();
     const token = state.auth.token;
 
+    console.log("token:", token);
+
     if (!token) {
       return thunkApi.rejectWithValue("No token for user refreshing");
     }
 
     try {
-      setToken(data.token);
+      setToken(token);
       const { data } = await authInstance.get("/users/current");
-
-      console.log(data);
-
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
