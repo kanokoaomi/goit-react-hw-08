@@ -12,7 +12,7 @@ const Contact = ({ id, name, number }) => {
     return (
         <>
             <div>
-                <p className={styles.text}>{name}</p>
+                <p className={styles.text}><b>{name}</b></p>
                 <p className={styles.text}>{number}</p>
             </div>
             <button className={styles.button} type="button" onClick={() => onDeleteContact(id)}>Delete</button>

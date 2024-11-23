@@ -1,21 +1,9 @@
-.navigation {
-    display: flex;
-    gap: 24px;
-    padding: 24px;
-    justify-content: center;
-    background-color: #343434;
-}
-
-.link {
-    font-size: 20px;
-    color: whitesmoke;
-    line-height: 1;
-    font-weight: 350;
-}
-
-.activeLink {
-    color: lightblue;
-    font-size: 22px;
-    font-weight: 500;
-    transition: all 0.1s linear;
+.buttonLogOut {
+    margin-right: 24px;
+    font-size: 18px;
+    /* font-weight: 600; */
+    background-color: transparent;
+    color: lightcoral;
+    border: none;
+    cursor: pointer;
 }

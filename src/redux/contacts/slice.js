@@ -4,8 +4,7 @@ import { selectContacts } from "./selectors";
 import { selectFilter } from "../filters/selectors";
 
 const initialState = {
-  name: [],
-  phone: [],
+  items: [],
   isLoading: false,
   error: null,
 };
@@ -15,8 +14,8 @@ export const selectFilteredContacts = createSelector(
   (contacts, filter) => {
     return contacts.filter((contact) => {
       return (
-        contact.name.toLowerCase().includes(filter.toLowerCase().trim()) ||
-        contact.phone.toLowerCase().includes(filter.toLowerCase().trim())
+        contact.name?.toLowerCase().includes(filter.toLowerCase().trim()) ||
+        contact.number?.replace(/[^\d]/g, "").includes(filter.trim())
       );
     });
   }
@@ -28,6 +27,7 @@ export const contactsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, (state) => {
+        state.items = [];
         state.isLoading = true;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {

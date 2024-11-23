@@ -1,8 +1,11 @@
 import RegistrationForm from "../components/RegistrationForm/RegistrationForm"
+import Section from "../components/Section/Section"
 
 const RegistrationPage = () => {
     return (
-        <div><RegistrationForm /></div>
+        <Section>
+            <RegistrationForm />
+        </Section>
     )
 }
 

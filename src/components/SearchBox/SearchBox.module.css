@@ -1,9 +1,16 @@
 .input {
-    padding: 5px;
+    padding: 10px;
+    min-width: 200px;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
 .wrapper {
-    margin-left: 40px;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.find {
+    font-size: 22px;
+    margin-bottom: 8px;
 }

@@ -1,7 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { loginValidationSchema } from "../../utils/schemas";
 import { login } from "../../redux/auth/operations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserisLoading } from "../../redux/auth/selectors";
+
+import styles from "../RegistrationForm/RegistrationForm.module.css"
+import Loading from "../Loading";
 
 const LoginForm = () => {
     const initialValues = {
@@ -16,11 +20,12 @@ const LoginForm = () => {
         actions.resetForm()
     }
 
-    // const onAddContact = (formData) => {
-    //     const finalContacts = {
-    //         ...formData,
-    //     }
-    // }
+    const isLoading = useSelector(selectUserisLoading)
+    if (isLoading) {
+        return (
+            <Loading />
+        )
+    }
 
     return (
         <Formik
@@ -28,25 +33,27 @@ const LoginForm = () => {
             validationSchema={loginValidationSchema}
             onSubmit={handleSubmit}
         >
-            <Form>
-                <label>
-                    <span>Email:</span>
+            <Form className={styles.form}>
+                <label className={styles.label}>
+                    <span className={styles.spanForName}>Email:</span>
                     <Field
+                        className={styles.input}
                         name='email'
                         type='email'
                     />
                     <ErrorMessage name='email' component='span' />
                 </label>
-                <label>
-                    <span>Password:</span>
+                <label className={styles.label}>
+                    <span className={styles.spanForName}>Password:</span>
                     <Field
+                        className={styles.input}
                         name='password'
                         type='password'
                     />
                     <ErrorMessage name='password' component='span' />
                 </label>
 
-                <button type="submit">Log In</button>
+                <button className={styles.button} type="submit">Log In</button>
             </Form>
         </Formik>
     )

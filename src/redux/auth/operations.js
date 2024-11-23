@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const authInstance = axios.create({
+export const authInstance = axios.create({
   baseURL: "https://connections-api.goit.global/",
   //   headers: {
   //     Authorization: `Bearer ${token}`,
@@ -20,7 +20,7 @@ export const register = createAsyncThunk(
   "auth/register",
   async (formData, thunkApi) => {
     try {
-      console.log("Form data to send:", formData);
+      // console.log("Form data to send:", formData);
       const { data } = await authInstance.post("/users/signup", formData);
       setToken(data.token);
       return data;
@@ -62,7 +62,7 @@ export const refreshUser = createAsyncThunk(
     const state = thunkApi.getState();
     const token = state.auth.token;
 
-    console.log("token:", token);
+    // console.log("token:", token);
 
     if (!token) {
       return thunkApi.rejectWithValue("No token for user refreshing");

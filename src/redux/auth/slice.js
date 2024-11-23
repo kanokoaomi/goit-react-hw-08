@@ -23,7 +23,7 @@ export const authSlice = createSlice({
         state.error = null;
       })
       .addCase(register.fulfilled, (state, action) => {
-        console.log(action.payload);
+        // console.log(action.payload);
         state.isLoading = false;
         state.isLoggedIn = true;
         state.token = action.payload.token;
@@ -39,7 +39,7 @@ export const authSlice = createSlice({
         state.error = null;
       })
       .addCase(login.fulfilled, (state, action) => {
-        console.log(action.payload);
+        // console.log(action.payload);
         state.isLoading = false;
         state.isLoggedIn = true;
         state.token = action.payload.token;

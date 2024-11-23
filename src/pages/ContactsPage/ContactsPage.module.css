@@ -1,0 +1,14 @@
+.title {
+    text-align: center;
+    font-size: 32px;
+    color: lightblue;
+}
+
+.line::after {
+    content: "";
+    border: 1px solid lightblue;
+    width: 100%;
+    margin-bottom: 46px;
+    margin-top: 32px;
+    display: block;
+}
