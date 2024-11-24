@@ -7,11 +7,11 @@ import HomePage from "./pages/HomePage/HomePage"
 import LoginPage from "./pages/LoginPage"
 import RegistrationPage from "./pages/RegistrationPage"
 import ContactsPage from "./pages/ContactsPage/ContactsPage"
-// import UserMenu from "./components/UserMenu/UserMenu"
-import AppBar from "./components/AppBar/AppBar"
 
 import PrivateRoute from "./components/PrivateRoute"
 import RestrictedRoute from "./components/RestrictedRoute"
+import Loading from "./components/Loading"
+import Layout from "./components/Layout"
 
 
 const App = () => {
@@ -25,24 +25,22 @@ const App = () => {
 
   if (isRefreshing) {
     return (
-      <>
-        <AppBar />
-        <div>Loading...</div>
-      </>
+      <Loading />
     )
   }
 
   return (
     <>
-      <AppBar />
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<RestrictedRoute component={<LoginPage />} />} />
-          <Route path="/register" element={<RestrictedRoute component={<RegistrationPage />} />} />
-          <Route path="/contacts" element={<PrivateRoute component={<ContactsPage />} />} />
-        </Routes>
-      </Suspense>
+      <Layout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<RestrictedRoute component={<LoginPage />} />} />
+            <Route path="/register" element={<RestrictedRoute component={<RegistrationPage />} />} />
+            <Route path="/contacts" element={<PrivateRoute component={<ContactsPage />} />} />
+          </Routes>
+        </Suspense>
+      </Layout>
     </>
   )
 }

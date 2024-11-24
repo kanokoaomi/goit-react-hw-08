@@ -7,3 +7,12 @@
     border: none;
     cursor: pointer;
 }
+
+.title {
+    color: lightblue;
+}
+
+.wrapper {
+    display: flex;
+    gap: 24px;
+}
